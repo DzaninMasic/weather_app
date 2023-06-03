@@ -14,3 +14,9 @@ body {
   src: local("work-sans"),
     url(./assets/fonts/WorkSans-Regular.ttf) format("truetype");
 }
+
+@font-face {
+  font-family: "work-sans-light";
+  src: local("work-sans-light"),
+    url(./assets/fonts/WorkSans-Thin.ttf) format("truetype");
+}
