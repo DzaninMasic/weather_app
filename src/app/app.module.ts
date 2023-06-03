@@ -5,9 +5,15 @@ import { AppComponent } from './app.component';
 import { HomePageComponent } from './home-page-component/home-page.component';
 import { AppRoutingModule } from './app-routing.module';
 import { SearchPageComponent } from './search-page-component/search-page.component';
+import { AboutPageComponent } from './about-page-component/about-page.component';
 
 @NgModule({
-  declarations: [AppComponent, HomePageComponent, SearchPageComponent],
+  declarations: [
+    AppComponent,
+    HomePageComponent,
+    SearchPageComponent,
+    AboutPageComponent,
+  ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],
   bootstrap: [AppComponent],
