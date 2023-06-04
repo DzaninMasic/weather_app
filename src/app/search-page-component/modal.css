@@ -24,6 +24,7 @@
   display: flex;
   align-items: center;
   margin-bottom: 10px;
+  border-radius: 4px;
 }
 
 .holder {
@@ -34,14 +35,14 @@
 }
 
 .x-icon {
-  width: 40px;
-  height: 40px;
+  width: 25px;
+  height: 25px;
   position: relative;
 }
 
 .line {
   position: absolute;
-  width: 100%;
+  width: 75%;
   height: 2px;
   background-color: black;
   transform-origin: center;

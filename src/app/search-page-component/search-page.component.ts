@@ -5,12 +5,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-search-page',
   templateUrl: './search-page.component.html',
-  styleUrls: [
-    './search-page.component.css',
-    './hamburger.css',
-    './modal.css',
-    './search-page-pt2.component.css',
-  ],
+  styleUrls: ['./search-page.component.css', './hamburger.css', './modal.css'],
 })
 export class SearchPageComponent implements OnInit {
   constructor(private router: Router) {}

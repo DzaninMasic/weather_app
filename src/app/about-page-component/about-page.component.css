@@ -208,5 +208,10 @@
 @media only screen and (max-width: 430px) {
   .small-text-bolder {
     font-size: 8px;
+    width: 140px;
+  }
+
+  .description-container {
+    width: 300px;
   }
 }

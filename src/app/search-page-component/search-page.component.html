@@ -118,6 +118,24 @@
         </div>
       </div>
       <p class="next-five-days-text">Next five days</p>
+      <div
+        style="
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-direction: row;
+          margin: 5px;
+        "
+      >
+        <p class="next-five-days-text">Next five days</p>
+        <a
+          class="next-five-days-text"
+          href="/this-week"
+          style="font-family: work-sans-light; margin-left: 5px"
+          >(see more here)</a
+        >
+      </div>
+      <p class="next-five-days-text">Next five days</p>
       <div class="next-five-days-container" (click)="goToThisWeek()">
         <div
           *ngFor="let item of forcastArray; let i = index; trackBy: trackByFn"
@@ -130,13 +148,13 @@
             [src]="item.resolvedImage"
             alt="LoadingImg..."
             style="
-              height: 26px;
-              width: 51px;
+              height: 50px;
+              width: 50px;
               margin-top: 5px;
               margin-bottom: 5px;
             "
           />
-          <p class="small-text-bolder" style="margin-left: 15px">
+          <p class="small-text-bolder">
             {{ item.weekday }}
           </p>
         </div>
@@ -191,12 +209,13 @@
               [(ngModel)]="searchText"
               (ngModelChange)="onTextChanged($event)"
               placeholder="Search..."
+              class="search-input"
             />
             <!-- <button>
               <img src="../../assets/images/search.png" alt="Search" />
             </button> -->
             <button>
-              <div class="x-icon" (click)="togglePopup()">
+              <div class="x-button" (click)="togglePopup()">
                 <div class="line"></div>
                 <div class="line"></div>
               </div>
