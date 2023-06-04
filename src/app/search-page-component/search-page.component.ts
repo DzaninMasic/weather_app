@@ -32,7 +32,7 @@ export class SearchPageComponent implements OnInit {
   isOpen: boolean = false;
   isOpenPopup: boolean = false;
   baseLink: string = 'https://api.openweathermap.org/data/2.5/weather?';
-  APPID: string = 'bd5e378503939ddaee76f12ad7a97608'; // change later - this is stolen from https://gist.github.com/lalithabacies/c8f973dc6754384d6cade282b64a8cb1
+  APPID: string = '7a88f44a73b2870985ca58e19db07fc6'; // change later - this is stolen from https://gist.github.com/lalithabacies/c8f973dc6754384d6cade282b64a8cb1
   place1: string = 'q=Sarajevo,bih';
   place2: string = 'q=London,uk';
 
