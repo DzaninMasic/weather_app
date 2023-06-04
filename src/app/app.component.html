@@ -1,1 +1,40 @@
-<router-outlet></router-outlet>
+<router-outlet>
+  <div class="header-container">
+    <div class="logo-container" (click)="goHome()">
+      <img src="../../favicon.ico" alt="" class="title-logo" />
+      <h2 class="title-h2"><span class="title">Weather</span>Cast</h2>
+    </div>
+    <div class="button-container">
+      <a href="/live-stream" class="button">Live stream</a>
+      <a href="/about-page" class="button">About</a>
+      <a href="/contact-page" class="button">Contact</a>
+    </div>
+    <a href="#" class="widget-button">Use as widget</a>
+
+    <nav>
+      <button
+        class="hamburger hamburger--collapse"
+        type="button"
+        aria-label="Menu"
+        aria-controls="navigation"
+        aria-expanded="true/false"
+        (click)="toggleNav()"
+        id="hamb-button"
+      >
+        <span class="hamburger-box">
+          <span class="hamburger-inner"></span>
+        </span>
+      </button>
+
+      <div class="dropdown-nav" id="navigation" *ngIf="isOpen">
+        <a id="nav-item" href="#">Use as a widget</a>
+        <hr />
+        <a id="nav-item" href="/live-stream">Live stream</a>
+        <hr />
+        <a id="nav-item" href="/about-page">About</a>
+        <hr />
+        <a id="nav-item" href="/contact-page">Contact</a>
+      </div>
+    </nav>
+  </div>
+</router-outlet>

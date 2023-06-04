@@ -1,178 +1,236 @@
+<link href="./hamburger.css" rel="stylesheet" />
 <div>
-  <div class="header-container">
-    <div class="logo-container">
-      <img src="../../favicon.ico" alt="" class="title-logo" />
-      <h2 class="title-h2"><span class="title">Weather</span>Cast</h2>
-    </div>
-    <div class="button-container">
-      <a href="#" class="button">Live stream</a>
-      <a href="/about-page" class="button">About</a>
-      <a href="#" class="button">Contact</a>
-    </div>
-    <a href="#" class="widget-button">Use as widget</a>
-  </div>
   <div class="main-component">
-    <div class="image-component">
-      <div style="display: flex">
-        <img
-          src="../../assets/images/Frame.png"
-          alt="location"
-          style="height: 37px; width: 37px; margin-right: 10px"
-        />
-        <p class="today-in">Today in</p>
-      </div>
-      <div class="search-container">
-        <p style="opacity: 0">a</p>
-        <p class="search-text">Sarajevo</p>
-        <div class="search-button">
+    <div class="component-wrapperd">
+      <div class="image-component">
+        <div style="display: flex">
           <img
-            src="../../assets/images/search.png"
-            alt=""
-            class="search-image"
+            src="../../assets/images/Frame.png"
+            alt="location"
+            style="height: 37px; width: 37px; margin-right: 10px"
           />
+          <p class="today-in">Today in</p>
+        </div>
+        <div class="search-container" (click)="togglePopup()">
+          <p style="opacity: 0">a</p>
+          <p class="search-text">{{ dataForMainScreen.name }}</p>
+          <div class="search-button">
+            <img
+              src="../../assets/images/search.png"
+              alt=""
+              class="search-image"
+            />
+          </div>
         </div>
       </div>
-    </div>
-    <div class="weather-container">
-      <div class="weather-one">
-        <div class="temperature-date-container">
-          <div class="image-temperature-container">
-            <img
-              src="../../assets/images/weather.png"
-              alt=""
-              class="image-sun"
-            />
-            <p class="temperature">27°</p>
+      <div class="weather-container">
+        <div class="weather-one">
+          <div class="temperature-date-container">
+            <div class="image-temperature-container">
+              <img [src]="myMainImage" alt="ImageSun1" class="image-sun" />
+              <p class="temperature">{{ dataForMainScreen.temp }}</p>
+            </div>
+            <p class="date-1">{{ dataForMainScreen.formattedDay }}</p>
+            <p class="date-2">{{ dataForMainScreen.formattedTime }}</p>
           </div>
-          <p class="date-1">15th Jun '23</p>
-          <p class="date-2">Thursday | 2:45 pm</p>
-        </div>
-        <div class="air-quality-metric-container">
-          <div class="weather-two">
-            <div class="air-quality-div">
-              <p class="air-quality">Air quality</p>
+          <div class="air-quality-metric-container">
+            <div class="weather-two" style="position: relative">
+              <div class="air-quality-div">
+                <p class="air-quality">Air quality</p>
+                <div style="position: relative">
+                  <img
+                    src="../../assets/images/air-quality.png"
+                    alt=""
+                    style="width: 250px; height: 250px; position: absolute"
+                  />
+                  <div
+                    style="
+                      z-index: 10;
+                      width: 250px;
+                      height: 175px;
+                      display: flex;
+                      align-items: center;
+                      justify-content: center;
+                      flex-direction: column;
+                    "
+                  >
+                    <p class="air-quality">2/5</p>
+                    <p class="air-quality">Moderate</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="change-metric" style="margin-right: 30px">
               <img
-                src="../../assets/images/air-quality.png"
+                src="../../assets/images/c-f.png"
                 alt=""
-                style="height: 250px; width: 250px; margin-left: -75px"
+                style="height: 35px; width: 80px; margin-bottom: 10px"
               />
-              <p
-                class="air-quality"
-                style="margin-top: -200px; margin-left: 30px"
-              >
-                2/5
-              </p>
-              <p class="air-quality">Moderate</p>
+              <img
+                src="../../assets/images/kmh-mph.png"
+                alt=""
+                style="height: 35px; width: 80px; margin-bottom: 10px"
+              />
             </div>
           </div>
-          <div class="change-metric" style="margin-right: 30px">
+        </div>
+        <div class="wind-hum-rain-container">
+          <div class="cond-container-dash">
             <img
-              src="../../assets/images/c-f.png"
+              src="../../assets/images/wind.png"
               alt=""
-              style="
-                height: 35px;
-                width: 80px;
-                margin-top: 40px;
-                margin-left: 30px;
-              "
+              class="small-icon"
+              style="margin-right: 10px"
             />
+            <p class="small-text" style="font-weight: 600; margin-right: 10px">
+              Wind
+            </p>
+            <p class="small-text" style="margin-right: 10px">
+              {{ dataForMainScreen.windSpeed }} km/h
+            </p>
+          </div>
+          <div class="cond-container-dash">
             <img
-              src="../../assets/images/kmh-mph.png"
+              src="../../assets/images/humidity.png"
               alt=""
-              style="
-                height: 35px;
-                width: 80px;
-                margin-top: 10px;
-                margin-left: 30px;
-              "
+              class="small-icon"
+              style="margin-right: 10px"
             />
+            <p class="small-text" style="font-weight: 600; margin-right: 10px">
+              Hum
+            </p>
+            <p class="small-text" style="margin-right: 10px">
+              {{ dataForMainScreen.humidity }} %
+            </p>
+          </div>
+          <div class="cond-container">
+            <img
+              src="../../assets/images/rain.png"
+              alt=""
+              class="small-icon"
+              style="margin-right: 10px"
+            />
+            <p class="small-text" style="font-weight: 600; margin-right: 10px">
+              Rain
+            </p>
+            <p class="small-text" style="margin-right: 10px">0.2%</p>
           </div>
         </div>
       </div>
-      <div class="wind-hum-rain-container">
-        <img src="../../assets/images/wind.png" alt="" class="small-icon" />
-        <p class="small-text" style="font-weight: 600">Wind</p>
-        <p class="small-text">10km/h</p>
-        <p class="small-text">|</p>
-        <img src="../../assets/images/humidity.png" alt="" class="small-icon" />
-        <p class="small-text" style="font-weight: 600">Hum</p>
-        <p class="small-text">54%</p>
-        <p class="small-text">|</p>
-        <img src="../../assets/images/rain.png" alt="" class="small-icon" />
-        <p class="small-text" style="font-weight: 600">Rain</p>
-        <p class="small-text">0.2%</p>
+      <p class="next-five-days-text">Next five days</p>
+      <div class="next-five-days-container" (click)="goToThisWeek()">
+        <div
+          *ngFor="let item of forcastArray; let i = index; trackBy: trackByFn"
+          class="day-container"
+        >
+          <p class="small-text-bolder" style="margin-left: 5px">
+            {{ item.temperature }}
+          </p>
+          <img
+            [src]="item.resolvedImage"
+            alt="LoadingImg..."
+            style="
+              height: 26px;
+              width: 51px;
+              margin-top: 5px;
+              margin-bottom: 5px;
+            "
+          />
+          <p class="small-text-bolder" style="margin-left: 15px">
+            {{ item.weekday }}
+          </p>
+        </div>
+        <!-- <div class="day-container">
+          <p class="small-text-bolder" style="margin-left: 5px">27°C</p>
+          <img
+            src="../../assets/images/cloudy.png"
+            [src]="myMainImage"
+            alt=""
+            style="
+              height: 26px;
+              width: 51px;
+              margin-top: 5px;
+              margin-bottom: 5px;
+            "
+          />
+          <p class="small-text-bolder" style="margin-left: 15px">Fri</p>
+        </div> -->
+      </div>
+      <p class="next-five-days-text">Follow us</p>
+      <div class="social-media-container">
+        <img
+          src="../../assets/images/facebook.png"
+          alt=""
+          style="height: 50px; width: 50px; margin-right: 20px"
+        />
+        <img
+          src="../../assets/images/twitter.png"
+          alt=""
+          style="height: 50px; width: 50px; margin-right: 20px"
+        />
+        <img
+          src="../../assets/images/linkedin.png"
+          alt=""
+          style="height: 50px; width: 50px; margin-right: 20px"
+        />
+        <img
+          src="../../assets/images/instagram.png"
+          alt=""
+          style="height: 50px; width: 50px"
+        />
       </div>
     </div>
-    <p class="next-five-days-text">Next five days</p>
-    <div class="next-five-days-container">
-      <div class="day-container-first">
-        <p class="small-text-bolder" style="margin-left: 5px">27°C</p>
-        <img
-          src="../../assets/images/cloudy.png"
-          alt=""
-          style="height: 26px; width: 51px; margin-top: 5px; margin-bottom: 5px"
-        />
-        <p class="small-text-bolder" style="margin-left: 15px">Fri</p>
+  </div>
+  <div *ngIf="isOpenPopup">
+    <div class="overlay-screen">
+      <div class="body-overlay">
+        <div class="container">
+          <div class="search-bar">
+            <input
+              type="text"
+              [(ngModel)]="searchText"
+              (ngModelChange)="onTextChanged($event)"
+              placeholder="Search..."
+            />
+            <!-- <button>
+              <img src="../../assets/images/search.png" alt="Search" />
+            </button> -->
+            <button>
+              <div class="x-icon" (click)="togglePopup()">
+                <div class="line"></div>
+                <div class="line"></div>
+              </div>
+            </button>
+          </div>
+
+          <div class="holder" *ngIf="shouldShowTemplate">
+            <img [src]="pngImg1" alt="Image1" />
+            <h2>Sarajevo</h2>
+            <div [innerHTML]="temperature1"></div>
+            <div [innerHTML]="type1"></div>
+          </div>
+
+          <div class="holder" *ngIf="shouldShowTemplate">
+            <img [src]="pngImg2" alt="Image2" />
+            <h2>London</h2>
+            <div [innerHTML]="temperature2"></div>
+            <div [innerHTML]="type2"></div>
+          </div>
+          <div *ngIf="!shouldShowTemplate">
+            <div
+              *ngFor="
+                let item of placesInnerHtml;
+                let i = index;
+                trackBy: trackByFn
+              "
+              (click)="onClickItem(i)"
+              class="holder"
+            >
+              {{ item.name }}
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="day-container">
-        <p class="small-text-bolder" style="margin-left: 5px">27°C</p>
-        <img
-          src="../../assets/images/cloudy.png"
-          alt=""
-          style="height: 26px; width: 51px; margin-top: 5px; margin-bottom: 5px"
-        />
-        <p class="small-text-bolder" style="margin-left: 15px">Fri</p>
-      </div>
-      <div class="day-container">
-        <p class="small-text-bolder" style="margin-left: 5px">27°C</p>
-        <img
-          src="../../assets/images/cloudy.png"
-          alt=""
-          style="height: 26px; width: 51px; margin-top: 5px; margin-bottom: 5px"
-        />
-        <p class="small-text-bolder" style="margin-left: 15px">Fri</p>
-      </div>
-      <div class="day-container">
-        <p class="small-text-bolder" style="margin-left: 5px">27°C</p>
-        <img
-          src="../../assets/images/cloudy.png"
-          alt=""
-          style="height: 26px; width: 51px; margin-top: 5px; margin-bottom: 5px"
-        />
-        <p class="small-text-bolder" style="margin-left: 15px">Fri</p>
-      </div>
-      <div class="day-container-last">
-        <p class="small-text-bolder" style="margin-left: 5px">27°C</p>
-        <img
-          src="../../assets/images/cloudy.png"
-          alt=""
-          style="height: 26px; width: 51px; margin-top: 5px; margin-bottom: 5px"
-        />
-        <p class="small-text-bolder" style="margin-left: 15px">Fri</p>
-      </div>
-    </div>
-    <p class="next-five-days-text">Follow us</p>
-    <div class="social-media-container">
-      <img
-        src="../../assets/images/facebook.png"
-        alt=""
-        style="height: 50px; width: 50px; margin-right: 20px"
-      />
-      <img
-        src="../../assets/images/twitter.png"
-        alt=""
-        style="height: 50px; width: 50px; margin-right: 20px"
-      />
-      <img
-        src="../../assets/images/linkedin.png"
-        alt=""
-        style="height: 50px; width: 50px; margin-right: 20px"
-      />
-      <img
-        src="../../assets/images/instagram.png"
-        alt=""
-        style="height: 50px; width: 50px"
-      />
     </div>
   </div>
 </div>
