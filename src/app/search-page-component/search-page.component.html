@@ -158,21 +158,6 @@
             {{ item.weekday }}
           </p>
         </div>
-        <!-- <div class="day-container">
-          <p class="small-text-bolder" style="margin-left: 5px">27°C</p>
-          <img
-            src="../../assets/images/cloudy.png"
-            [src]="myMainImage"
-            alt=""
-            style="
-              height: 26px;
-              width: 51px;
-              margin-top: 5px;
-              margin-bottom: 5px;
-            "
-          />
-          <p class="small-text-bolder" style="margin-left: 15px">Fri</p>
-        </div> -->
       </div>
       <p class="next-five-days-text">Follow us</p>
       <div class="social-media-container">
@@ -211,11 +196,8 @@
               placeholder="Search..."
               class="search-input"
             />
-            <!-- <button>
-              <img src="../../assets/images/search.png" alt="Search" />
-            </button> -->
-            <button>
-              <div class="x-button" (click)="togglePopup()">
+            <button class="x-button">
+              <div class="x-icon" (click)="togglePopup()">
                 <div class="line"></div>
                 <div class="line"></div>
               </div>

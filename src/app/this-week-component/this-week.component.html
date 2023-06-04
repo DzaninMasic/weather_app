@@ -12,7 +12,7 @@
         </div>
         <div class="search-container">
           <p style="opacity: 0">a</p>
-          <p class="search-text">Sarajevo</p>
+          <p class="search-text">{{ city.name }}</p>
           <div class="search-button">
             <img
               src="../../assets/images/search.png"
@@ -23,17 +23,34 @@
         </div>
       </div>
       <div class="weather-container">
-        <div class="entire-day-container">
+        <div
+          class="entire-day-container"
+          *ngFor="let item of forcastArray; let i = index; trackBy: trackByFn"
+        >
           <div class="day-container">
-            <p class="small-text-bolder">Fri</p>
+            <p class="small-text-bolder">
+              {{ calculateDate(forcastArray[i].dt_txt)[2].substring(0, 3) }}
+            </p>
           </div>
           <div class="temperature-and-icon-container">
-            <p class="small-text-bolder">27°C</p>
-            <img
+            <p class="small-text-bolder">
+              {{ (forcastArray[i].main.temp - 273.15).toFixed(0) }}°C
+            </p>
+            <!-- <img
               class="img-weather"
               src="../../assets/images/cloudy.png"
               alt=""
               style="height: 25px; width: 40px; margin-left: 5px"
+            /> -->
+            <img
+              [src]="item.resolvedImage"
+              alt="LoadingImg..."
+              style="
+                height: 70px;
+                width: 70px;
+                margin-top: 5px;
+                margin-bottom: 5px;
+              "
             />
           </div>
           <div class="wind-rain-hum-container">
@@ -44,7 +61,9 @@
                 style="width: 20px; height: 20px; margin: 0"
               />
               <p class="small-text">Wind</p>
-              <p class="small-text-bolder">10 km/h</p>
+              <p class="small-text-bolder">
+                {{ forcastArray[i].wind.speed }} km/h
+              </p>
             </div>
             <div class="data-container">
               <img
@@ -53,7 +72,7 @@
                 style="width: 20px; height: 20px; margin: 0"
               />
               <p class="small-text">Rain</p>
-              <p class="small-text-bolder">5%</p>
+              <p class="small-text-bolder">5 %</p>
             </div>
             <div class="data-container">
               <img
@@ -62,7 +81,9 @@
                 style="width: 20px; height: 20px; margin: 0"
               />
               <p class="small-text">Hum</p>
-              <p class="small-text-bolder">54%</p>
+              <p class="small-text-bolder">
+                {{ forcastArray[i].main.humidity }}%
+              </p>
             </div>
           </div>
           <div class="sunset-sunrise-container">
@@ -71,7 +92,7 @@
               alt=""
               style="width: 50px; height: 30px"
             />
-            <p class="small-text-bolder">6am</p>
+            <p class="small-text-bolder">4:58am</p>
           </div>
           <div class="sunset-sunrise-container">
             <img
@@ -79,246 +100,24 @@
               alt=""
               style="width: 50px; height: 30px"
             />
-            <p class="small-text-bolder">6pm</p>
-          </div>
-        </div>
-        <div class="entire-day-container">
-          <div class="day-container">
-            <p class="small-text-bolder">Fri</p>
-          </div>
-          <div class="temperature-and-icon-container">
-            <p class="small-text-bolder">27°C</p>
-            <img
-              class="img-weather"
-              src="../../assets/images/cloudy.png"
-              alt=""
-              style="height: 25px; width: 40px; margin-left: 5px"
-            />
-          </div>
-          <div class="wind-rain-hum-container">
-            <div class="data-container">
-              <img
-                src="../../assets/images/wind.png"
-                alt=""
-                style="width: 20px; height: 20px; margin: 0"
-              />
-              <p class="small-text">Wind</p>
-              <p class="small-text-bolder">10 km/h</p>
-            </div>
-            <div class="data-container">
-              <img
-                src="../../assets/images/rain.png"
-                alt=""
-                style="width: 20px; height: 20px; margin: 0"
-              />
-              <p class="small-text">Rain</p>
-              <p class="small-text-bolder">5%</p>
-            </div>
-            <div class="data-container">
-              <img
-                src="../../assets/images/humidity.png"
-                alt=""
-                style="width: 20px; height: 20px; margin: 0"
-              />
-              <p class="small-text">Hum</p>
-              <p class="small-text-bolder">54%</p>
-            </div>
-          </div>
-          <div class="sunset-sunrise-container">
-            <img
-              src="../../assets/images/sunrise.png"
-              alt=""
-              style="width: 50px; height: 30px"
-            />
-            <p class="small-text-bolder">6am</p>
-          </div>
-          <div class="sunset-sunrise-container">
-            <img
-              src="../../assets/images/sunset.png"
-              alt=""
-              style="width: 50px; height: 30px"
-            />
-            <p class="small-text-bolder">6pm</p>
-          </div>
-        </div>
-        <div class="entire-day-container">
-          <div class="day-container">
-            <p class="small-text-bolder">Fri</p>
-          </div>
-          <div class="temperature-and-icon-container">
-            <p class="small-text-bolder">27°C</p>
-            <img
-              class="img-weather"
-              src="../../assets/images/cloudy.png"
-              alt=""
-              style="height: 25px; width: 40px; margin-left: 5px"
-            />
-          </div>
-          <div class="wind-rain-hum-container">
-            <div class="data-container">
-              <img
-                src="../../assets/images/wind.png"
-                alt=""
-                style="width: 20px; height: 20px; margin: 0"
-              />
-              <p class="small-text">Wind</p>
-              <p class="small-text-bolder">10 km/h</p>
-            </div>
-            <div class="data-container">
-              <img
-                src="../../assets/images/rain.png"
-                alt=""
-                style="width: 20px; height: 20px; margin: 0"
-              />
-              <p class="small-text">Rain</p>
-              <p class="small-text-bolder">5%</p>
-            </div>
-            <div class="data-container">
-              <img
-                src="../../assets/images/humidity.png"
-                alt=""
-                style="width: 20px; height: 20px; margin: 0"
-              />
-              <p class="small-text">Hum</p>
-              <p class="small-text-bolder">54%</p>
-            </div>
-          </div>
-          <div class="sunset-sunrise-container">
-            <img
-              src="../../assets/images/sunrise.png"
-              alt=""
-              style="width: 50px; height: 30px"
-            />
-            <p class="small-text-bolder">6am</p>
-          </div>
-          <div class="sunset-sunrise-container">
-            <img
-              src="../../assets/images/sunset.png"
-              alt=""
-              style="width: 50px; height: 30px"
-            />
-            <p class="small-text-bolder">6pm</p>
-          </div>
-        </div>
-        <div class="entire-day-container">
-          <div class="day-container">
-            <p class="small-text-bolder">Fri</p>
-          </div>
-          <div class="temperature-and-icon-container">
-            <p class="small-text-bolder">27°C</p>
-            <img
-              class="img-weather"
-              src="../../assets/images/cloudy.png"
-              alt=""
-              style="height: 25px; width: 40px; margin-left: 5px"
-            />
-          </div>
-          <div class="wind-rain-hum-container">
-            <div class="data-container">
-              <img
-                src="../../assets/images/wind.png"
-                alt=""
-                style="width: 20px; height: 20px; margin: 0"
-              />
-              <p class="small-text">Wind</p>
-              <p class="small-text-bolder">10 km/h</p>
-            </div>
-            <div class="data-container">
-              <img
-                src="../../assets/images/rain.png"
-                alt=""
-                style="width: 20px; height: 20px; margin: 0"
-              />
-              <p class="small-text">Rain</p>
-              <p class="small-text-bolder">5%</p>
-            </div>
-            <div class="data-container">
-              <img
-                src="../../assets/images/humidity.png"
-                alt=""
-                style="width: 20px; height: 20px; margin: 0"
-              />
-              <p class="small-text">Hum</p>
-              <p class="small-text-bolder">54%</p>
-            </div>
-          </div>
-          <div class="sunset-sunrise-container">
-            <img
-              src="../../assets/images/sunrise.png"
-              alt=""
-              style="width: 50px; height: 30px"
-            />
-            <p class="small-text-bolder">6am</p>
-          </div>
-          <div class="sunset-sunrise-container">
-            <img
-              src="../../assets/images/sunset.png"
-              alt=""
-              style="width: 50px; height: 30px"
-            />
-            <p class="small-text-bolder">6pm</p>
-          </div>
-        </div>
-        <div class="entire-day-container">
-          <div class="day-container">
-            <p class="small-text-bolder">Fri</p>
-          </div>
-          <div class="temperature-and-icon-container">
-            <p class="small-text-bolder">27°C</p>
-            <img
-              class="img-weather"
-              src="../../assets/images/cloudy.png"
-              alt=""
-              style="height: 25px; width: 40px; margin-left: 5px"
-            />
-          </div>
-          <div class="wind-rain-hum-container">
-            <div class="data-container">
-              <img
-                src="../../assets/images/wind.png"
-                alt=""
-                style="width: 20px; height: 20px; margin: 0"
-              />
-              <p class="small-text">Wind</p>
-              <p class="small-text-bolder">10 km/h</p>
-            </div>
-            <div class="data-container">
-              <img
-                src="../../assets/images/rain.png"
-                alt=""
-                style="width: 20px; height: 20px; margin: 0"
-              />
-              <p class="small-text">Rain</p>
-              <p class="small-text-bolder">5%</p>
-            </div>
-            <div class="data-container">
-              <img
-                src="../../assets/images/humidity.png"
-                alt=""
-                style="width: 20px; height: 20px; margin: 0"
-              />
-              <p class="small-text">Hum</p>
-              <p class="small-text-bolder">54%</p>
-            </div>
-          </div>
-          <div class="sunset-sunrise-container">
-            <img
-              src="../../assets/images/sunrise.png"
-              alt=""
-              style="width: 50px; height: 30px"
-            />
-            <p class="small-text-bolder">6am</p>
-          </div>
-          <div class="sunset-sunrise-container">
-            <img
-              src="../../assets/images/sunset.png"
-              alt=""
-              style="width: 50px; height: 30px"
-            />
-            <p class="small-text-bolder">6pm</p>
+            <p class="small-text-bolder">6:28pm</p>
           </div>
         </div>
       </div>
     </div>
+    <button
+      style="
+        border-radius: 6px;
+        border: 1px solid white;
+        background: rgba(255, 255, 255, 0.1);
+        margin: 10px;
+        color: white;
+        font: work-sans-light;
+      "
+    >
+      <a href="/search-page" style="color: white; text-decoration: none"
+        >Return to general</a
+      >
+    </button>
   </div>
 </div>

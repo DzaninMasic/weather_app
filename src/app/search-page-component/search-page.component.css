@@ -50,6 +50,15 @@
   font-family: "work-sans";
 }
 
+.line {
+  position: absolute;
+  width: 100%;
+  width: 75%;
+  height: 2px;
+  background-color: black;
+  transform-origin: center;
+}
+
 .button:hover {
   text-decoration: underline;
   text-decoration-thickness: 1px;
