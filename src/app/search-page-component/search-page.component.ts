@@ -131,27 +131,27 @@ export class SearchPageComponent implements OnInit {
       this.myMainImage = this.myGlobalImageObj[`${imgId}.png`];
     } else if (variableToSet === 2)
       this.pngImg2 = this.myGlobalImageObj[`${imgId}.png`];
-    // axios({
-    //   method: "get",
-    //   url: `${this.baseLinkImage}${imgId}.png`,
-    //   responseType: "arraybuffer",
-    // })
-    //   .then((response) => {
-    //     const imageBuffer = new Uint8Array(response.data);
-    //     const binaryImage = Array.from(imageBuffer)
-    //       .map((byte) => String.fromCharCode(byte))
-    //       .join("");
-    //     const base64Image = btoa(binaryImage);
-    //     if (variableToSet === 1) {
-    //       this.pngImg1 = `data:image/png;base64, ${base64Image}`;
-    //       this.dataForMainScreen.image = `data:image/png;base64, ${base64Image}`;
-    //       this.myMainImage = `data:image/png;base64, ${base64Image}`;
-    //     } else if (variableToSet === 2)
-    //       this.pngImg2 = `data:image/png;base64, ${base64Image}`;
-    //   })
-    //   .catch((error) => {
-    //     console.error(error);
-    //   });
+    axios({
+      method: 'get',
+      url: `${this.baseLinkImage}${imgId}.png`,
+      responseType: 'arraybuffer',
+    })
+      .then((response) => {
+        const imageBuffer = new Uint8Array(response.data);
+        const binaryImage = Array.from(imageBuffer)
+          .map((byte) => String.fromCharCode(byte))
+          .join('');
+        const base64Image = btoa(binaryImage);
+        if (variableToSet === 1) {
+          this.pngImg1 = `data:image/png;base64, ${base64Image}`;
+          this.dataForMainScreen.image = `data:image/png;base64, ${base64Image}`;
+          this.myMainImage = `data:image/png;base64, ${base64Image}`;
+        } else if (variableToSet === 2)
+          this.pngImg2 = `data:image/png;base64, ${base64Image}`;
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   }
 
   goToThisWeek() {
@@ -267,7 +267,6 @@ export class SearchPageComponent implements OnInit {
   }
 
   fetchForecast(): void {
-    // api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={API key}
     axios
       .get(
         `https://api.openweathermap.org/data/2.5/forecast?lat=${this.mainLat}&lon=${this.mainLng}&APPID=${this.APPID}`
@@ -291,6 +290,14 @@ export class SearchPageComponent implements OnInit {
             });
           }
         });
+        window.localStorage.setItem(
+          'forcast',
+          JSON.stringify(this.forcastArray)
+        );
+        window.localStorage.setItem(
+          'city',
+          JSON.stringify(response.data?.city || {})
+        );
       })
       .catch((e) => console.log(e));
   }
